@@ -15,6 +15,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import CreateClient from "./Components/create-client.component";
 import EditClient from "./Components/edit-client.component";
 import ClientList from "./Components/client-list.component";
+import ProductList from "./Components/product-list.component";
+import CreateProduct from "./Components/create-product.component";
 
 // App Component
 const App = () => {
@@ -45,6 +47,20 @@ const App = () => {
                     Client List
                   </Link>
                 </Nav>
+
+                <Nav>
+                  <Link to={"/create-product"} 
+                    className="nav-link">
+                    Create Product
+                  </Link>
+                </Nav>
+
+                <Nav>
+                  <Link to={"/product-list"} 
+                    className="nav-link">
+                    Product List
+                  </Link>
+                </Nav>
               </Nav>
             </Container>
           </Navbar>
@@ -59,6 +75,8 @@ const App = () => {
                   <Route path="/create-client" component={CreateClient} />
                   <Route path="/edit-client/:id" component={EditClient} />
                   <Route path="/client-list" component={ClientList} />
+                  <Route path="/product-list" component={ProductList} />
+                  <Route path="/create-product" component={CreateProduct} />
                 </Switch>
               </div>
             </Col>
