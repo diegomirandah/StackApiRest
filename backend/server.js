@@ -23,7 +23,7 @@ db.sequelize.sync({ alter: true }).then(() => {
     console.log("Drop and re-sync db.");
 });
 
-
+// Agregar rutas al backend
 require("./app/routes/client.routes")(app);
 require("./app/routes/category.routes")(app);
 require("./app/routes/product.routes")(app);

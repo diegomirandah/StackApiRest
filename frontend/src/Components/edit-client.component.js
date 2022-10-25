@@ -13,7 +13,7 @@ const EditClient = (props) => {
   //onSubmit handler
   const onSubmit = (ClientObject) => {
     ClientDataService
-      .put("http://localhost:8080/api/client/" + props.match.params.id, ClientObject )
+      .update(props.match.params.id, ClientObject )
       .then((res) => {
         if (res.status === 200) {
           alert("Client successfully updated");

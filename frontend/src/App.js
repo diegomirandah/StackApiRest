@@ -17,6 +17,7 @@ import EditClient from "./Components/edit-client.component";
 import ClientList from "./Components/client-list.component";
 import ProductList from "./Components/product-list.component";
 import CreateProduct from "./Components/create-product.component";
+import EditProduct from "./Components/edit-product.component";
 
 // App Component
 const App = () => {
@@ -34,12 +35,12 @@ const App = () => {
               </Navbar.Brand>
   
               <Nav className="justify-content-end">
-                <Nav>
+                {/* <Nav>
                   <Link to={"/create-client"} 
                     className="nav-link">
                     Create Client
                   </Link>
-                </Nav>
+                </Nav> */}
   
                 <Nav>
                   <Link to={"/client-list"} 
@@ -48,12 +49,12 @@ const App = () => {
                   </Link>
                 </Nav>
 
-                <Nav>
+                {/* <Nav>
                   <Link to={"/create-product"} 
                     className="nav-link">
                     Create Product
                   </Link>
-                </Nav>
+                </Nav> */}
 
                 <Nav>
                   <Link to={"/product-list"} 
@@ -77,6 +78,7 @@ const App = () => {
                   <Route path="/client-list" component={ClientList} />
                   <Route path="/product-list" component={ProductList} />
                   <Route path="/create-product" component={CreateProduct} />
+                  <Route path="/edit-product/:id" component={EditProduct} />
                 </Switch>
               </div>
             </Col>

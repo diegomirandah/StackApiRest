@@ -6,12 +6,10 @@ import CategoryDataService from "../Services/category.service";
   
 const ProductForm = (props) => {
     const [category, setCategory] = useState([]);
-    console.log("aquí")
     useEffect(() => {
       CategoryDataService.getAll()
         .then(({ data }) => {
           setCategory(data);
-          console.log(data)
         })
         .catch((error) => {
           console.log(error);
@@ -24,6 +22,12 @@ const ProductForm = (props) => {
       stock: Yup.number().min(0,"No puede ser menor a 0").required(),
       categoryId: Yup.number().min(0,"No puede ser menor a 0").required()
     });
+
+    const DataSelect = () => {
+      return category.map((res, i) => {
+        return (<option obj={res} key={i} value={res.id}>{res.name}</option>);
+      });
+    };
   
     return (
       <div className="form-wrapper">
@@ -48,11 +52,7 @@ const ProductForm = (props) => {
               <label htmlFor="categoryId">Category</label>
               <Field as="select" name="categoryId">
                 <option disabled value="">(select)</option>
-                {
-                  category.map((res, i) =>(
-                    <option value={res.id}>{res.name}</option>
-                  ))
-                }
+                {DataSelect()}
              </Field>
             </FormGroup >
             <Button variant="danger" size="lg" 

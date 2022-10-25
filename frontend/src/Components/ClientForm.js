@@ -11,7 +11,6 @@ const ClientForm = (props) => {
     CategoryDataService.getAll()
       .then(({ data }) => {
         setCategory(data);
-        console.log(data)
       })
       .catch((error) => {
         console.log(error);
@@ -44,16 +43,6 @@ const ClientForm = (props) => {
             <label htmlFor="email">Email</label>
             <Field name="email" type="text" className="form-control" placeholder="Email"/>
             <ErrorMessage name="email" className="d-block invalid-feedback" component="span" />
-          </FormGroup >
-          <FormGroup className="mb-3">
-            <Field as="select" name="CategoryId">
-              <option disabled value="">(Select)</option>
-              {
-                category.map((res, i) =>(
-                  <option value={res.id}>{res.name}</option>
-                ))
-              }
-           </Field>
           </FormGroup >
           <Button variant="danger" size="lg" 
             block="block" type="submit">
