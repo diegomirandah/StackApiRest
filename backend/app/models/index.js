@@ -17,10 +17,24 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 // Importa modelos a Sequelize
-db.clients = require("./client.model.js")(sequelize, Sequelize);
+db.clientes = require("./clientes.model.js")(sequelize, Sequelize);
+db.reservas = require("./reservas.model.js")(sequelize, Sequelize);
+db.restaurante = require("./restaurante.model.js")(sequelize, Sequelize);
+db.mesas = require("./mesas.model.js")(sequelize, Sequelize);
+db.admins = require("./admin.model.js")(sequelize, Sequelize);
+
+db.clients= require("./clients.model.js")(sequelize, Sequelize);
 db.sales = require("./sale.model.js")(sequelize, Sequelize);
 db.products = require("./product.model.js")(sequelize, Sequelize);
 db.categories = require("./category.model.js")(sequelize, Sequelize);
+
+db.clientes.hasMany(db.reservas)
+db.restaurante.hasMany(db.reservas)
+db.reservas.belongsTo(db.clientes)
+db.reservas.belongsTo(db.restaurante)
+db.reservas.hasMany(db.mesas)
+db.mesas.belongsTo(db.reservas)
+
 
 db.categories.hasMany(db.products);
 db.products.belongsTo(db.categories);

@@ -18,6 +18,9 @@ import ClientList from "./Components/client-list.component";
 import ProductList from "./Components/product-list.component";
 import CreateProduct from "./Components/create-product.component";
 import EditProduct from "./Components/edit-product.component";
+import CreateCliente from "./Components/create-cliente.component";
+import ClienteList from "./Components/client-liste.component";
+import Login from "./Components/login.component";
 
 // App Component
 const App = () => {
@@ -62,6 +65,18 @@ const App = () => {
                     Product List
                   </Link>
                 </Nav>
+                <Nav>
+                  <Link to={"/create-clientes"} 
+                    className="nav-link">
+                    Create Cliente
+                  </Link>
+                </Nav>
+                <Nav>
+                  <Link to={"/login"} 
+                    className="nav-link">
+                    Login
+                  </Link>
+                </Nav>                 
               </Nav>
             </Container>
           </Navbar>
@@ -79,6 +94,9 @@ const App = () => {
                   <Route path="/product-list" component={ProductList} />
                   <Route path="/create-product" component={CreateProduct} />
                   <Route path="/edit-product/:id" component={EditProduct} />
+                  <Route path="/create-clientes" component={CreateCliente} />
+                  <Route path="/cliente-list" component={ClienteList} />
+                  <Route path="/login" component={Login} />
                 </Switch>
               </div>
             </Col>
