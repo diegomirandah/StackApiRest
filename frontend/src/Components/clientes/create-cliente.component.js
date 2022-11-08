@@ -1,6 +1,6 @@
 // Import Modules
 import React, { useState, useEffect } from "react";
-import ClienteDataService from "../Services/cliente.service";
+import ClienteDataService from "../../Services/cliente.service";
 import ClienteForm from "./ClienteForm";
   
 const CreateCliente = () => {

@@ -1,13 +1,13 @@
 // Import Modules
 import React, { useState, useEffect } from "react";
-import ClienteDataService from "../Services/cliente.service";
+import ClienteDataService from "../../Services/cliente.service";
 import ClienteForm from "./ClienteForm";
 
 const EditCliente = (props) => {
   const [formValues, setFormValues] = useState({
-    name: "",
-    address: "",
-    email: "",
+    password: "",
+    nombre: "",
+    telefono: "",
   });
     
   //onSubmit handler
@@ -17,7 +17,7 @@ const EditCliente = (props) => {
       .then((res) => {
         if (res.status === 200) {
           alert("Client successfully updated");
-          props.history.push("/client-list");
+          props.history.push("/cliente-list");
         } else Promise.reject();
       })
       .catch((err) => alert("Something went wrong"));
@@ -27,8 +27,8 @@ const EditCliente = (props) => {
   useEffect(() => {
     ClienteDataService.get(props.match.params.id)
       .then((res) => {
-        const { name, address, email } = res.data;
-        setFormValues({ name, address, email });
+        const {rut,correo } = res.data;
+        setFormValues({ rut,correo });
       })
       .catch((err) => console.log(err));
   }, []);

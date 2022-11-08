@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import ClienteDataService from "../Services/cliente.service";
+import ProductDataService from "../Services/product.service";
 import { Table, Button, Row, Col} from "react-bootstrap";
 import { Link } from "react-router-dom";
-import ClienteTableRow from "./ClienteTableRow";
+import ProductTableRow from "./ProductTableRow";
   
-const ClienteList = () => {
-  const [client, setClient] = useState([]);
+const ProductList = () => {
+  const [product, setProduct] = useState([]);
   
   useEffect(() => {
-    ClienteDataService.getAll()
+    ProductDataService.getAll()
       .then(({ data }) => {
-        setClient(data);
+        setProduct(data);
       })
       .catch((error) => {
         console.log(error);
@@ -18,8 +18,8 @@ const ClienteList = () => {
   }, []);
   
   const DataTable = () => {
-    return client.map((res, i) => {
-      return <ClienteTableRow obj={res} key={i} />;
+    return product.map((res, i) => {
+      return <ProductTableRow obj={res} key={i} />;
     });
   };
   
@@ -27,13 +27,13 @@ const ClienteList = () => {
     <div className="table-wrapper">
       <Row>
         <Col>
-          <h2>Cliente list</h2>
+          <h2>Product list</h2>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Link to={"/create-clientes"}>
-            <Button>Create cliente</Button>
+          <Link to={"/create-Product/"}>
+            <Button>Create product</Button>
           </Link>
         </Col>
       </Row>
@@ -42,11 +42,10 @@ const ClienteList = () => {
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th>rut</th>
-                <th>correo</th>
-                <th>nombre</th>
-                <th>telefono</th>
-                <th>Actions</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Stock</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>{DataTable()}</tbody>
@@ -57,4 +56,4 @@ const ClienteList = () => {
   );
 };
   
-export default ClienteList;
+export default ProductList;

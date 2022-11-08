@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const Restaurantes = sequelize.define("restaurante", {
+    const Restaurantes = sequelize.define("restaurantes", {
         cant_mesas: {
             type: Sequelize.INTEGER,
             allowNull: false

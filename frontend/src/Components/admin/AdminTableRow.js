@@ -1,13 +1,13 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import ClienteDataService from "../Services/cliente.service";
+import AdminDataService from "../../Services/admin.service";
   
-const ClienteTableRow = (props) => {
-  const { rut,correo,nombre,telefono } = props.obj;
+const AdminTableRow = (props) => {
+  const { id,rut,password,num_local} = props.obj;
   
-  const deleteClient = () => {
-    ClienteDataService.remove(rut)
+  const deleteAdmin = () => {
+    AdminDataService.remove(id)
       .then((res) => {
         if (res.status === 200) {
           alert("Client successfully deleted");
@@ -22,15 +22,14 @@ const ClienteTableRow = (props) => {
   return (
     <tr>
       <td>{rut}</td>
-      <td>{correo}</td>
-      <td>{nombre}</td>
-      <td>{telefono}</td>
+      <td>{password}</td>
+      <td>{num_local}</td>
       <td>
         <Link className="edit-link" 
-          to={"/edit-client/" + rut}>
+          to={"/edit-admin/" + id}>
           Edit
         </Link>
-        <Button onClick={deleteClient} 
+        <Button onClick={deleteAdmin} 
           size="sm" variant="danger">
           Delete
         </Button>
@@ -39,4 +38,4 @@ const ClienteTableRow = (props) => {
   );
 };
   
-export default ClienteTableRow;
+export default AdminTableRow;
