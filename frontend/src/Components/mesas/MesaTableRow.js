@@ -1,16 +1,16 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import ProductDataService from "../Services/product.service";
+import MesaDataService from "../../Services/mesa.service";
   
-const ProductTableRow = (props) => {
-  const { id, name, description, stock } = props.obj;
+const MesaTableRow = (props) => {
+  const { id, ambiente,cant_mesa_reserva } = props.obj;
   
-  const deleteProduct = () => {
-    ProductDataService.remove(id)
+  const deleteMesa = () => {
+    MesaDataService.remove(id)
       .then((res) => {
         if (res.status === 200) {
-          alert("Product successfully deleted");
+          alert("Mesa successfully deleted");
           window.location.reload();
         } else Promise.reject();
       })
@@ -21,15 +21,14 @@ const ProductTableRow = (props) => {
   
   return (
     <tr>
-      <td>{name}</td>
-      <td>{description}</td>
-      <td>{stock}</td>
+      <td>{ambiente}</td>
+      <td>{cant_mesa_reserva}</td>
       <td>
         <Link className="edit-link" 
-          to={"/edit-product/" + id}>
+          to={"/edit-mesa/" + id}>
           Edit
         </Link>
-        <Button onClick={deleteProduct} 
+        <Button onClick={deleteMesa} 
           size="sm" variant="danger">
           Delete
         </Button>
@@ -38,4 +37,4 @@ const ProductTableRow = (props) => {
   );
 };
   
-export default ProductTableRow;
+export default MesaTableRow;

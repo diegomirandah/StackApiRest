@@ -2,20 +2,9 @@ import React, { useState, useEffect } from 'react';
 import * as Yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { FormGroup, Button } from 'react-bootstrap';
-import CategoryDataService from '../../Services/category.service';
 
 const ClienteForm = (props) => {
-  const [category, setCategory] = useState([]);
 
-  useEffect(() => {
-    CategoryDataService.getAll()
-      .then(({ data }) => {
-        setCategory(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
 
   const validationSchema = Yup.object().shape({
     rut: Yup.number().integer().required('Rut is required'),

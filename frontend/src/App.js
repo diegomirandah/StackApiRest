@@ -12,13 +12,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 // Import other React Component
-import CreateClient from './Components/create-client.component';
-import EditClient from './Components/edit-client.component';
-import ClientList from './Components/client-list.component';
 
-import ProductList from './Components/product-list.component';
-import CreateProduct from './Components/create-product.component';
-import EditProduct from './Components/edit-product.component';
 
 import CreateCliente from './Components/clientes/create-cliente.component';
 import ClienteList from './Components/clientes/cliente-list.component';
@@ -30,6 +24,9 @@ import EditRestaurante from './Components/restaurantes/edit-restaurante.componen
 
 import CreateAdmin from './Components/admin/create-admin.component';
 
+import CreateReserva from './Components/reservas/create-reserva.component';
+
+import CreateMesa from './Components/mesas/create-mesa.component';
 // App Component
 const App = () => {
   return (
@@ -84,6 +81,16 @@ const App = () => {
                     crear admin
                   </Link>
                 </Nav>
+                <Nav>
+                  <Link to={'/create-reserva'} className='nav-link'>
+                    crear reserva
+                  </Link>
+                </Nav>
+                <Nav>
+                  <Link to={'/create-mesa'} className='nav-link'>
+                    crear mesa
+                  </Link>
+                </Nav>
               </Nav>
             </Container>
           </Navbar>
@@ -95,13 +102,7 @@ const App = () => {
               <div className='wrapper'>
                 <Switch>
                   <Route exact path='/' component={ClienteList} />
-                  <Route path='/create-client' component={CreateClient} />
-                  <Route path='/edit-client/:id' component={EditClient} />
-                  <Route path='/client-list' component={ClientList} />
 
-                  <Route path='/product-list' component={ProductList} />
-                  <Route path='/create-product' component={CreateProduct} />
-                  <Route path='/edit-product/:id' component={EditProduct} />
 
                   <Route path='/create-clientes' component={CreateCliente} />
                   <Route path='/cliente-list' component={ClienteList} />
@@ -112,6 +113,10 @@ const App = () => {
                   <Route path='/edit-restaurante/:id' component={EditRestaurante} />
 
                   <Route path='/create-admin' component={CreateAdmin} />
+
+                  <Route path='/create-reserva' component={CreateReserva} />
+
+                  <Route path='/create-mesa' component={CreateMesa} />
                 </Switch>
               </div>
             </Col>

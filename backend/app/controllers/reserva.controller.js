@@ -1,7 +1,5 @@
 // Importar dependencias
 const db = require("../models");
-const bcrypt = require('bcrypt');
-const authConfig = require('../config/auth');
 const Reservas = db.reservas;
 const Cliente = db.clientes;
 const Restaurante = db.restaurantes;
@@ -16,11 +14,11 @@ exports.create = (req, res) => {
                     .then(restaurante=>{
                         if(restaurante){
                             Reservas.create({
-                                clienteId: cliente.id,
-                                restauranteId: restaurante.id,
                                 fecha: req.body.fecha,
                                 cant_persona: req.body.cant_persona,
-                                disp: req.body.disp
+                                disp: req.body.disp,
+                                clienteId: cliente.id,
+                                restauranteId: restaurante.id,
                             })
                             .then(reserva=>{
                                 res.send(reserva);

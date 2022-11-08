@@ -1,16 +1,16 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import ProductDataService from "../Services/product.service";
+import ReservaDataService from "../../Services/reserva.service";
   
-const ProductTableRow = (props) => {
-  const { id, name, description, stock } = props.obj;
+const ReservaTableRow = (props) => {
+  const { id, fecha, cant_persona, disp } = props.obj;
   
-  const deleteProduct = () => {
-    ProductDataService.remove(id)
+  const deleteReserva = () => {
+    ReservaDataService.remove(id)
       .then((res) => {
         if (res.status === 200) {
-          alert("Product successfully deleted");
+          alert("Reserva successfully deleted");
           window.location.reload();
         } else Promise.reject();
       })
@@ -21,15 +21,15 @@ const ProductTableRow = (props) => {
   
   return (
     <tr>
-      <td>{name}</td>
-      <td>{description}</td>
-      <td>{stock}</td>
+      <td>{fecha}</td>
+      <td>{cant_persona}</td>
+      <td>{disp}</td>
       <td>
         <Link className="edit-link" 
-          to={"/edit-product/" + id}>
+          to={"/edit-reserva/" + id}>
           Edit
         </Link>
-        <Button onClick={deleteProduct} 
+        <Button onClick={deleteReserva} 
           size="sm" variant="danger">
           Delete
         </Button>
@@ -38,4 +38,4 @@ const ProductTableRow = (props) => {
   );
 };
   
-export default ProductTableRow;
+export default ReservaTableRow;
