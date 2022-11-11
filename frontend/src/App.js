@@ -9,7 +9,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 
 // Import from react-router-dom
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
 // Import other React Component
 import CreateClient from "./Components/create-client.component";
@@ -18,6 +18,7 @@ import ClientList from "./Components/client-list.component";
 import ProductList from "./Components/product-list.component";
 import CreateProduct from "./Components/create-product.component";
 import EditProduct from "./Components/edit-product.component";
+import Graph from "./Components/graph.component";
 
 // App Component
 const App = () => {
@@ -35,27 +36,12 @@ const App = () => {
               </Navbar.Brand>
   
               <Nav className="justify-content-end">
-                {/* <Nav>
-                  <Link to={"/create-client"} 
-                    className="nav-link">
-                    Create Client
-                  </Link>
-                </Nav> */}
-  
                 <Nav>
                   <Link to={"/client-list"} 
                     className="nav-link">
                     Client List
                   </Link>
                 </Nav>
-
-                {/* <Nav>
-                  <Link to={"/create-product"} 
-                    className="nav-link">
-                    Create Product
-                  </Link>
-                </Nav> */}
-
                 <Nav>
                   <Link to={"/product-list"} 
                     className="nav-link">
@@ -72,7 +58,7 @@ const App = () => {
             <Col md={12}>
               <div className="wrapper">
                 <Switch>
-                  <Route exact path="/" component={ClientList} />
+                  <Route exact path="/" component={Graph} />
                   <Route path="/create-client" component={CreateClient} />
                   <Route path="/edit-client/:id" component={EditClient} />
                   <Route path="/client-list" component={ClientList} />
