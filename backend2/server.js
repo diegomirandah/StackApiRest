@@ -9,17 +9,17 @@ const bp = require('body-parser')
 mongoose.connect(process.env.DATABASE_URL);
 const database = mongoose.connection;
 
+// Error al conectar con base de datos MongoDB
 database.on('error', (error) => {
     console.log(error)
 })
 
+// Exito al conectar con base de datos MongoDB
 database.once('connected', () => {
     console.log('Database Connected');
 })
 
 const app = express();
-
-
 
 //configuración de cors (control de acceso)
 app.use(cors())

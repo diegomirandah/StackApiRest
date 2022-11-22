@@ -4,7 +4,7 @@ module.exports = app => {
 
     router.post("/", clients.create);
     router.get("/", clients.findAll);
-    router.get("/:id", clients.findOne);
+    router.get("/:id", clients.findId);
     router.put("/:id", clients.update);
     router.delete("/:id", clients.delete);
     router.delete("/", clients.deleteAll);
