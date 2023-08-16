@@ -1,0 +1,14 @@
+name: Mi Primer Flujo de Trabajo
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v2
+
+    - name: Imprime un mensaje
+      run: echo "Hola, mundo desde GitHub Actions!"
